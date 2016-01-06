@@ -1,10 +1,10 @@
 # -*- encoding: utf-8 -*-
 $LOAD_PATH.unshift File.expand_path('../lib', __FILE__)
-require 'voxpupuli-release/version'
+require 'voxpupuli/release/version'
 
 Gem::Specification.new do |s|
   s.name        = 'voxpupuli-release'
-  s.version     = VoxpupuliRelease::Version
+  s.version     = Voxpupuli::Release::VERSION
   s.authors     = ['Vox Pupuli']
   s.email       = ['support@voxpupuli.org']
   s.homepage    = 'http://github.com/voxpupuli/voxpupuli-release-gem'
