@@ -34,7 +34,7 @@ end
 desc 'Check Changelog.'
 task :check_changelog do
   v = Blacksmith::Modulefile.new.version
-  if File.readlines('CHANGELOG.md').grep(/#.+[Rr]eleas.+ #{v}/).size == 0
+  if File.readlines('CHANGELOG.md').grep(/#.+[Rr]eleas.+#{Regexp.escape(v)}/).size == 0
     fail "Unable to find a CHANGELOG.md entry for the #{v} release."
   end
 end
