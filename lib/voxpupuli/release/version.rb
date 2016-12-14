@@ -1,5 +1,5 @@
 module Voxpupuli
   module Release
-    VERSION = '0.4.0-rc0'
+    VERSION = '0.4.0.pre'
   end
 end
