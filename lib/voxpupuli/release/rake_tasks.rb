@@ -34,7 +34,11 @@ end
 desc 'Check Changelog.'
 task :check_changelog do
   v = Blacksmith::Modulefile.new.version
-  if File.readlines('CHANGELOG.md').grep(/#.+[Rr]eleas.+#{Regexp.escape(v)}/).size == 0
+  # Acceptable release header formats:
+  #
+  # ## 2016-11-20 Release 4.0.2
+  # ## [v4.0.3-rc0](https://github.com/voxpupuli/puppet-r10k/tree/v4.0.3-rc0) (2016-12-13)
+  if File.readlines('CHANGELOG.md').grep( /^(#.+[Rr]eleas.+#{Regexp.escape(v)}|## \[v#{Regexp.escape(v)}\])/ ).size == 0
     fail "Unable to find a CHANGELOG.md entry for the #{v} release."
   end
 end
