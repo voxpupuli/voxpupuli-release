@@ -19,7 +19,7 @@ task "travis_release" do
 
   # idempotently create tags
   g = Blacksmith::Git.new
-  Rake::Task["module:tag"].invoke unless g.exec_git("tag -l v#{v}").strip == "v#{v}"
+  Rake::Task["module:tag"].invoke unless g.has_version_tag?(v)
 
   v_inc = m.increase_version(v)
   v_new = "#{v_inc}-rc0"
