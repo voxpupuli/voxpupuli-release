@@ -1,3 +1,24 @@
+desc 'Prepare a new release'
+task :prepare_release, [:version] do |t, args|
+  unless args[:version]
+    puts 'you need to provide a version like: rake prepare_release[1.0.0]'
+    exit
+  end
+
+  version = args[:version]
+  if ['major', 'minor', 'patch'].include?(version)
+    bump_task = "module:bump:#{version}"
+  elsif /^\d+\.\d+\.\d+$/.match(version)
+    bump_task = 'module:bump:full'
+    ENV['BLACKSMITH_FULL_VERSION'] = version
+  else
+    puts 'Version needs to be major, minor, patch or in the X.X.X format'
+    exit
+  end
+
+  Rake::Task[bump_task].invoke
+  Rake::Task['changelog'].invoke
+end
 
 desc 'release new version through Travis-ci'
 task "travis_release" do
