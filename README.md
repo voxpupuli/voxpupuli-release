@@ -15,7 +15,36 @@ Then, at the top of your `Rakefile`, add:
 require 'voxpupuli-release'
 ```
 
-To cut a new release of your module, ensure the `metadata.json` reflects the proper version. Also ensure that the `CHANGELOG.md` has a note about the release and that it actually is named Release or release, some old modules refer to it as Version, which won't work. Lastly check that no tag exists with that version number (format `v#.#.#`), and then run:
+# Making a new release
+
+## Preparations
+
+First we prepare the release. Ensure you're on a clean branch. Also set ```CHANGELOG_GITHUB_TOKEN``` so you can generate the changelog without hitting rate limts.
+
+```
+bundle exec rake prepare_release[NEW_VERSION]
+```
+
+This will bump the version. You can either use `major`, `minor`, `patch` or specify a full version in the `X.Y.Z` format.
+
+Next you commit this, push it to your remote and create a PR. The following code makes some assumptions about your layout:
+
+```bash
+VERSION="$(bundle exec rake module:version)"
+git checkout -b release-$VERSION
+git add metadata.json CHANGELOG.md
+git commit -m "Release $VERSION"
+
+# Push it to a remote that matches your username
+git push $(whoami) HEAD -u
+
+# Assumes you have hub installed
+hub pull-request -m "Release $VERSION"
+```
+
+## Releasing
+
+We'll assume that the preparation PR was acknowledged and merged.
 
 ```
 bundle exec rake travis_release
