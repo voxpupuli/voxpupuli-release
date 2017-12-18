@@ -23,35 +23,33 @@ task :prepare_release, [:version] do |t, args|
 end
 
 desc 'release new version through Travis-ci'
-task "travis_release" do
+task "travis_release" => [:check_version, :check_changelog, 'module:clean'] do
 
   require 'puppet_blacksmith/rake_tasks'
   Blacksmith::RakeTask.new do |t|
-    t.build = false # do not build the module nor push it to the Forge
-    # just do the tagging [:clean, :tag, :bump_commit]
+    t.tag_message_pattern = "Version %s" # Use annotated commits
   end
 
-  m = Blacksmith::Modulefile.new
-  v = m.version
-  raise "Refusing to release an RC or build-release (#{v}).\n" +
-        "Please set a semver *release* version." unless v =~ /^\d+\.\d+.\d+$/
-
-  Rake::Task[:check_changelog].invoke
-  # do a "manual" module:release (clean, tag, bump, commit, push tags)
-  Rake::Task["module:clean"].invoke
-
   # idempotently create tags
+  m = Blacksmith::Modulefile.new
   g = Blacksmith::Git.new
-  Rake::Task["module:tag"].invoke unless g.has_version_tag?(v)
+  Rake::Task["module:tag"].invoke unless g.has_version_tag?(m.version)
 
-  v_inc = m.increase_version(v)
-  v_new = "#{v_inc}-rc0"
+  # Bump to the next version as rc0
+  v_new = "#{m.increase_version(m.version)}-rc0"
   ENV['BLACKSMITH_FULL_VERSION'] = v_new
-  Rake::Task["module:bump:full"].invoke
+  Rake::Task["module:bump_commit:full"].invoke
 
   # push it out, and let travis do the release:
-  g.commit_modulefile!(v_new)
   g.push!
+end
+
+desc 'Check if the version is a semver release version'
+task :check_version do
+  m = Blacksmith::Modulefile.new
+  v = m.version
+  fail "Refusing to release an RC or build-release (#{v}).\n" +
+       "Please set a semver *release* version." unless v =~ /^\d+\.\d+.\d+$/
 end
 
 desc 'Check Changelog.'
