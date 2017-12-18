@@ -1,3 +1,5 @@
+require 'github_changelog_generator/task'
+
 desc 'Prepare a new release'
 task :prepare_release, [:version] do |t, args|
   unless args[:version]
@@ -62,4 +64,13 @@ task :check_changelog do
   if File.readlines('CHANGELOG.md').grep( /^(#.+[Rr]eleas.+#{Regexp.escape(v)}|## \[v#{Regexp.escape(v)}\])/ ).size == 0
     fail "Unable to find a CHANGELOG.md entry for the #{v} release."
   end
+end
+
+GitHubChangelogGenerator::RakeTask.new :changelog do |config|
+  modulefile = Blacksmith::Modulefile.new
+  config.user = 'voxpupuli'
+  config.project = modulefile.name
+  config.future_release = "v#{modulefile.version}" if modulefile.version =~ /^\d+\.\d+.\d+$/
+  config.header = "# Changelog\n\nAll notable changes to this project will be documented in this file.\nEach new release typically also includes the latest modulesync defaults.\nThese should not affect the functionality of the module."
+  config.exclude_labels = %w{duplicate question invalid wontfix wont-fix modulesync skip-changelog}
 end
