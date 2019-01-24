@@ -5,6 +5,7 @@ task "travis_release" do
   require 'puppet_blacksmith/rake_tasks'
   Blacksmith::RakeTask.new do |t|
     t.build = false # do not build the module nor push it to the Forge
+    t.tag_sign = true # sign release with gpg
     # just do the tagging [:clean, :tag, :bump_commit]
   end
 
