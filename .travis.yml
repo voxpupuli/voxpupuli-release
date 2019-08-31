@@ -10,6 +10,8 @@ matrix:
   fast_finish: true
 deploy:
   provider: rubygems
+  gemspec: voxpupuli-release.gemspec
+  gem: voxpupuli-release
   api_key:
     secure: "rXXGiuxkD9/U1H7m0+Nk7w5CD/Cv+e+P3QypMsaG9yUGUGrA/QT//jVK4bXSG3OkVm7EP6exuogLugoTDIl70Y6tbskuQ9UIRJ3w6VsTsAMEA6l0nHCoLWrH1DxZHH1IXX5ECwsP3WtdIQVBKBM0AGY9fl7eseLymAqkIgVgNOA+14z9ApomF1MZfMpkmJMrCU8DyotRE+rykEpFLNgAJALiGQZXyYSpfHO8jcfdWfG83al38e8Ate/TSQtLgkPT9QJNSTFDxsP4OFygKkI9DF+pHpMUodrf2j5avoOdTXUyNY1Bu7qQ6w2KxEvdJUyIacAHqQeZl93z9Bp0h++GmLjjSBx79PCVN0kiDJlkmL2NSRl9h7EkEr4F7uS//svFEVlr02Oddb9oAQZWrCOXA2q6LI3yD8UYQHHgsqFhlEDLxhaiRh28cFuKM0y4L1VDsHW52Dwy54oLEebq3WrIoFvEZ/MBzQa+Ah37WmQlfnpzWAIDWcwrZGOqg2/3EMQbwVqE1SP/nv7s0spaUFahu/pxNgrUKzkP+6pG+1mM0fzLKL+B97KXoZ4JoCuu5hpCYqC27S1K/7Ypqi8sQ14AC9SYSyxXAouk1t3kTEq6/TH/35A8g8Ia62p06Z2mMf/AmSW29nrJzdM0NlkRVK/4OZnqGTLClb83h2q08eR5vaY="
   on:
