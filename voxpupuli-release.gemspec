@@ -6,7 +6,7 @@ Gem::Specification.new do |s|
   s.name        = 'voxpupuli-release'
   s.version     = Voxpupuli::Release::VERSION
   s.authors     = ['Vox Pupuli']
-  s.email       = ['support@voxpupuli.org']
+  s.email       = ['voxpupuli@groups.io']
   s.homepage    = 'http://github.com/voxpupuli/voxpupuli-release-gem'
   s.summary     = 'Helpers for deploying Vox Pupuli modules'
   s.description = s.summary
@@ -19,4 +19,5 @@ Gem::Specification.new do |s|
   # Runtime dependencies, but also probably dependencies of requiring projects
   s.add_runtime_dependency 'rake'
   s.add_runtime_dependency 'puppet-blacksmith', '>= 4.0.0'
+  s.add_development_dependency 'github_changelog_generator'
 end
