@@ -1,7 +1,12 @@
 $LOAD_PATH.unshift File.expand_path('lib', __dir__)
 require 'voxpupuli/release/version'
 
-task :default => :changelog
+task :default => :dummy
+
+desc 'Dummy rake task'
+task 'dummy' do
+  puts 'this is a dummy rake task that just prints this line.'
+end
 
 begin
   require 'github_changelog_generator/task'
