@@ -2,7 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
-## [v1.0.0](https://github.com/voxpupuli/voxpupuli-release-gem/tree/v1.0.0) (2019-08-18)
+## [v1.0.1](https://github.com/voxpupuli/voxpupuli-release-gem/tree/v1.0.1) (2019-09-02)
+[Full Changelog](https://github.com/voxpupuli/voxpupuli-release-gem/compare/v1.0.0...v1.0.1)
+
+**Fixed bugs:**
+
+- set a message pattern for new releases [\#22](https://github.com/voxpupuli/voxpupuli-release-gem/pull/22) ([bastelfreak](https://github.com/bastelfreak))
+
+## [v1.0.0](https://github.com/voxpupuli/voxpupuli-release-gem/tree/v1.0.0) (2019-08-31)
 **Implemented enhancements:**
 
 - sign tags with gpg [\#20](https://github.com/voxpupuli/voxpupuli-release-gem/pull/20) ([bastelfreak](https://github.com/bastelfreak))
