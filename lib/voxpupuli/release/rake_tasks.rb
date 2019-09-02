@@ -6,6 +6,7 @@ task "travis_release" do
   Blacksmith::RakeTask.new do |t|
     t.build = false # do not build the module nor push it to the Forge
     t.tag_sign = true # sign release with gpg
+    t.tag_message_pattern = "Version %s" # required tag message for gpg-signed tags
     # just do the tagging [:clean, :tag, :bump_commit]
   end
 
