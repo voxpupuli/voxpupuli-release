@@ -1,5 +1,10 @@
 # Voxpupuli Release Gem
 
+[![License](https://img.shields.io/github/license/voxpupuli/voxpupuli-release.svg)](https://github.com/voxpupuli/voxpupuli-release/blob/master/LICENSE)
+[![Release](https://github.com/voxpupuli/voxpupuli-release/actions/workflows/release.yml/badge.svg)](https://github.com/voxpupuli/voxpupuli-release/actions/workflows/release.yml)
+[![RubyGem Version](https://img.shields.io/gem/v/voxpupuli-release.svg)](https://rubygems.org/gems/voxpupuli-release)
+[![RubyGem Downloads](https://img.shields.io/gem/dt/voxpupuli-release.svg)](https://rubygems.org/gems/voxpupuli-release)
+
 This is a helper Gem for the Vox Pupuli release workflow. This Gem currently serves only to encapsulate common `rake` tasks related to releasing modules.
 
 # Usage
@@ -20,3 +25,17 @@ To cut a new release of your module, ensure the `metadata.json` reflects the pro
 ```
 bundle exec rake travis_release
 ```
+
+## License
+
+This gem is licensed under the Apache-2 license.
+
+## Release information
+
+To make a new release, please do:
+* update the version in lib/voxpupuli/release/version.rb
+* Install gems with `bundle install --with release --path .vendor`
+* generate the changelog with `bundle exec rake changelog`
+* Check if the new version matches the closed issues/PRs in the changelog
+* Create a PR with it
+* After it got merged, push a tag. GitHub actions will do the actual release to rubygems and GitHub Packages
