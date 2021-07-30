@@ -19,5 +19,4 @@ Gem::Specification.new do |s|
   # Runtime dependencies, but also probably dependencies of requiring projects
   s.add_runtime_dependency 'rake'
   s.add_runtime_dependency 'puppet-blacksmith', '>= 4.0.0'
-  s.add_development_dependency 'github_changelog_generator'
 end
