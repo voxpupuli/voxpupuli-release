@@ -33,6 +33,11 @@ task "travis_release" do
   g.push!
 end
 
+desc 'Release via GitHub Actions (alias for travis_release)'
+task :release do
+  Rake::Task['travis_release'].invoke
+end
+
 desc 'Check Changelog.'
 task :check_changelog do
   v = Blacksmith::Modulefile.new.version
