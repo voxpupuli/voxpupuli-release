@@ -7,7 +7,7 @@ Gem::Specification.new do |s|
   s.version     = Voxpupuli::Release::VERSION
   s.authors     = ['Vox Pupuli']
   s.email       = ['voxpupuli@groups.io']
-  s.homepage    = 'http://github.com/voxpupuli/voxpupuli-release-gem'
+  s.homepage    = 'https://github.com/voxpupuli/voxpupuli-release-gem'
   s.summary     = 'Helpers for deploying Vox Pupuli modules'
   s.description = s.summary
   s.licenses    = 'Apache-2.0'
