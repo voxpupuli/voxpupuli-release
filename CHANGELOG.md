@@ -2,16 +2,29 @@
 
 All notable changes to this project will be documented in this file.
 
+## [v1.1.0](https://github.com/voxpupuli/voxpupuli-release-gem/tree/v1.1.0) (2021-10-15)
+
+[Full Changelog](https://github.com/voxpupuli/voxpupuli-release-gem/compare/v1.0.2...v1.1.0)
+
+**Implemented enhancements:**
+
+- Add `github_release` alias for `travis_release` task [\#28](https://github.com/voxpupuli/voxpupuli-release-gem/pull/28) ([bastelfreak](https://github.com/bastelfreak))
+
+**Fixed bugs:**
+
+- fix wrong syntax in GitHub actions [\#27](https://github.com/voxpupuli/voxpupuli-release-gem/pull/27) ([bastelfreak](https://github.com/bastelfreak))
+
 ## [v1.0.2](https://github.com/voxpupuli/voxpupuli-release-gem/tree/v1.0.2) (2021-07-30)
 
 [Full Changelog](https://github.com/voxpupuli/voxpupuli-release-gem/compare/v1.0.1...v1.0.2)
 
 **Fixed bugs:**
 
-- directly load blacksmitch rake tasks [\#25](https://github.com/voxpupuli/voxpupuli-release-gem/pull/25) ([bastelfreak](https://github.com/bastelfreak))
+- directly load blacksmith rake tasks [\#25](https://github.com/voxpupuli/voxpupuli-release-gem/pull/25) ([bastelfreak](https://github.com/bastelfreak))
 
 **Merged pull requests:**
 
+- Update release workflow + docs / Release 1.0.2 [\#26](https://github.com/voxpupuli/voxpupuli-release-gem/pull/26) ([bastelfreak](https://github.com/bastelfreak))
 - Convert from Travis to Github Actions [\#24](https://github.com/voxpupuli/voxpupuli-release-gem/pull/24) ([ekohl](https://github.com/ekohl))
 
 ## [v1.0.1](https://github.com/voxpupuli/voxpupuli-release-gem/tree/v1.0.1) (2019-09-02)
