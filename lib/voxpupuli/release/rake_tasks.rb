@@ -1,8 +1,7 @@
 require 'puppet_blacksmith/rake_tasks'
 
-desc 'release new version through Travis-ci'
-task "travis_release" do
-
+desc 'Release via GitHub Actions'
+task :release do
   Blacksmith::RakeTask.new do |t|
     t.build = false # do not build the module nor push it to the Forge
     t.tag_sign = true # sign release with gpg
@@ -28,14 +27,14 @@ task "travis_release" do
   ENV['BLACKSMITH_FULL_VERSION'] = v_new
   Rake::Task["module:bump:full"].invoke
 
-  # push it out, and let travis do the release:
+  # push it out, and let GitHub Actions do the release:
   g.commit_modulefile!(v_new)
   g.push!
 end
 
-desc 'Release via GitHub Actions (alias for travis_release)'
-task :release do
-  Rake::Task['travis_release'].invoke
+desc 'Depreciated: use the "release" task instead'
+task "travis_release" do
+  Rake::Task['release'].invoke
 end
 
 desc 'Check Changelog.'
