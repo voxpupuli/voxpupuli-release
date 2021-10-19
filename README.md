@@ -11,7 +11,7 @@ This is a helper Gem for the Vox Pupuli release workflow. This Gem currently ser
 
 Add the `voxpupuli-release` Gem to your `Gemfile`:
 
-```plain
+```ruby
 gem 'voxpupuli-release', git: 'https://github.com/voxpupuli/voxpupuli-release-gem'
 ```
 
