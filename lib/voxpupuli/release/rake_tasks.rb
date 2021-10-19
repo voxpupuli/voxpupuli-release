@@ -34,6 +34,7 @@ end
 
 desc 'Depreciated: use the "release" task instead'
 task "travis_release" do
+  STDERR.puts "Depreciated: use the 'release' task instead"
   Rake::Task['release'].invoke
 end
 
