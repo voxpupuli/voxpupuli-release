@@ -1,4 +1,3 @@
 # dummy rakefile that enables us to use the tasks within this repo
 # use it: bundle exec rake --rakefile Rakefile_ci
-$LOAD_PATH.unshift File.expand_path('lib', __dir__)
 require 'voxpupuli/release'
