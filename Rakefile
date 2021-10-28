@@ -1,5 +1,5 @@
 $LOAD_PATH.unshift File.expand_path('lib', __dir__)
-require 'voxpupuli/release'
+require 'voxpupuli/release/version'
 
 task :default => :dummy
 
