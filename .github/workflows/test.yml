@@ -19,6 +19,7 @@ jobs:
           - "2.6"
           - "2.7"
           - "3.0"
+    name: Ruby ${{ matrix.ruby }}
     steps:
       - uses: actions/checkout@v2
       - name: Install Ruby ${{ matrix.ruby }}
