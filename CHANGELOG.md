@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file.
 
+## [v1.2.0](https://github.com/voxpupuli/voxpupuli-release-gem/tree/v1.2.0) (2021-10-28)
+
+[Full Changelog](https://github.com/voxpupuli/voxpupuli-release-gem/compare/v1.1.0...v1.2.0)
+
+**Implemented enhancements:**
+
+-  Cleanup references to Travis CI in rake tasks  [\#32](https://github.com/voxpupuli/voxpupuli-release-gem/pull/32) ([genebean](https://github.com/genebean))
+
+**Fixed bugs:**
+
+- Fix syntax highlighting & add warning to travis\_release [\#33](https://github.com/voxpupuli/voxpupuli-release-gem/pull/33) ([ekohl](https://github.com/ekohl))
+
+**Merged pull requests:**
+
+- Enable basic gem testing [\#31](https://github.com/voxpupuli/voxpupuli-release-gem/pull/31) ([bastelfreak](https://github.com/bastelfreak))
+- gemspec: switch to https URLs [\#30](https://github.com/voxpupuli/voxpupuli-release-gem/pull/30) ([bastelfreak](https://github.com/bastelfreak))
+
 ## [v1.1.0](https://github.com/voxpupuli/voxpupuli-release-gem/tree/v1.1.0) (2021-10-15)
 
 [Full Changelog](https://github.com/voxpupuli/voxpupuli-release-gem/compare/v1.0.2...v1.1.0)
