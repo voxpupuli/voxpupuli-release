@@ -1,0 +1,3 @@
+# dummy rakefile that enables us to use the tasks within this repo
+# use it: bundle exec rake --rakefile Rakefile_ci
+require 'voxpupuli/release'
