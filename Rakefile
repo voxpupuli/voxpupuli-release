@@ -16,7 +16,7 @@ begin
     config.header = "# Changelog\n\nAll notable changes to this project will be documented in this file."
     config.exclude_labels = %w{duplicate question invalid wontfix wont-fix skip-changelog}
     config.user = 'voxpupuli'
-    config.project = 'voxpupuli-release-gem'
+    config.project = 'voxpupuli-release'
   end
 rescue LoadError
 end
