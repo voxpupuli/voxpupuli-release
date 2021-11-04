@@ -14,6 +14,7 @@ task :release do
   raise "Refusing to release an RC or build-release (#{v}).\n" +
         "Please set a semver *release* version." unless v =~ /^\d+\.\d+.\d+$/
 
+  Rake::Task[:check_reference_md].invoke
   Rake::Task[:check_changelog].invoke
   # do a "manual" module:release (clean, tag, bump, commit, push tags)
   Rake::Task["module:clean"].invoke
@@ -47,5 +48,21 @@ task :check_changelog do
   # ## [v4.0.3-rc0](https://github.com/voxpupuli/puppet-r10k/tree/v4.0.3-rc0) (2016-12-13)
   if File.readlines('CHANGELOG.md').grep( /^(#.+[Rr]eleas.+#{Regexp.escape(v)}|## \[v#{Regexp.escape(v)}\])/ ).size == 0
     fail "Unable to find a CHANGELOG.md entry for the #{v} release."
+  end
+end
+
+desc 'Check REFERENCE.md.'
+task :check_reference_md do
+  if File.exists?('REFERENCE.md')
+    system('git diff --quiet REFERENCE.md')
+    raise "There are uncommitted changes in the REFERENCE.md" unless $?.success?
+    # the task is defined in the Rakefile in each puppet module
+    # https://github.com/voxpupuli/modulesync_config/blob/a7c683a828332429852a6521598c7ce8652f016a/moduleroot/Rakefile.erb#L40-L44
+    Rake::Task['reference'].invoke
+    system('git diff --quiet REFERENCE.md')
+    raise "committed REFERENCE.md isn't up2date. Rake regenerated it. Please commit it for the next Release" unless $?.success?
+    puts "REFERENCE.md exists and is up2date"
+  else
+    puts "no REFERENCE.md present"
   end
 end
