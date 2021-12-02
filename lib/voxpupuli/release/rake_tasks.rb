@@ -15,7 +15,7 @@ task :release do
         "Please set a semver *release* version." unless v =~ /^\d+\.\d+.\d+$/
 
   # validate that the REFERENCE.md is up2date, if it exists
-  Rake::Task['strings:validate:reference'].invoke if File.exists?('REFERENCE.md')
+  Rake::Task['strings:validate:reference'].invoke if File.exist?('REFERENCE.md')
   Rake::Task[:check_changelog].invoke
   # do a "manual" module:release (clean, tag, bump, commit, push tags)
   Rake::Task["module:clean"].invoke
