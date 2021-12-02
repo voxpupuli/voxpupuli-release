@@ -47,7 +47,8 @@ task :check_changelog do
   #
   # ## 2016-11-20 Release 4.0.2
   # ## [v4.0.3-rc0](https://github.com/voxpupuli/puppet-r10k/tree/v4.0.3-rc0) (2016-12-13)
-  if File.readlines('CHANGELOG.md').grep( /^(#.+[Rr]eleas.+#{Regexp.escape(v)}|## \[v#{Regexp.escape(v)}\])/ ).size == 0
+  # ## [2.1.0](https://github.com/opus-codium/puppet-odoo/tree/2.1.0) (2021-12-02)
+  if File.readlines('CHANGELOG.md').grep( /^(#.+[Rr]eleas.+#{Regexp.escape(v)}|## \[v?#{Regexp.escape(v)}\])/ ).empty?
     fail "Unable to find a CHANGELOG.md entry for the #{v} release."
   end
 end
