@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file.
 
+## [v1.3.0](https://github.com/voxpupuli/voxpupuli-release/tree/v1.3.0) (2021-12-08)
+
+[Full Changelog](https://github.com/voxpupuli/voxpupuli-release/compare/v1.2.1...v1.3.0)
+
+**Implemented enhancements:**
+
+- Allow no 'v' in release version [\#41](https://github.com/voxpupuli/voxpupuli-release/pull/41) ([smortex](https://github.com/smortex))
+- Validate REFERENCE.md if it exists [\#39](https://github.com/voxpupuli/voxpupuli-release/pull/39) ([bastelfreak](https://github.com/bastelfreak))
+
 ## [v1.2.1](https://github.com/voxpupuli/voxpupuli-release/tree/v1.2.1) (2021-10-29)
 
 [Full Changelog](https://github.com/voxpupuli/voxpupuli-release/compare/v1.2.0...v1.2.1)
