@@ -19,6 +19,7 @@ Gem::Specification.new do |s|
   s.executables = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
 
   # Runtime dependencies, but also probably dependencies of requiring projects
+  s.add_runtime_dependency 'github_changelog_generator', '>= 1.16.1'
   s.add_runtime_dependency 'rake'
   s.add_runtime_dependency 'puppet-blacksmith', '>= 4.0.0'
   s.add_runtime_dependency 'puppet-strings', '>= 2.9.0'
