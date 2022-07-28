@@ -22,11 +22,19 @@ Then, at the top of your `Rakefile`, add:
 require 'voxpupuli-release'
 ```
 
-To cut a new release of your module, ensure the `metadata.json` reflects the proper version. Also ensure that the `CHANGELOG.md` has a note about the release and that it actually is named Release or release, some old modules refer to it as Version, which won't work. Lastly check that no tag exists with that version number (format `v#.#.#`), and then run:
+To cut a new release of your module, ensure the `metadata.json` reflects the expected new version of the module, that no tag exists with that version number (format `v#.#.#`), and then update the module `CHANGELOG.md` and `REFERENCE.md` by running:
+
+```plain
+bundle exec rake release:prepare
+```
+
+Commit these changes (likely in a new branch, open a Pull-Request and wait for it to be reviewed and merged).  When ready to ship the new release, ensure you are on the main branch, it is up-to-date, and run:
 
 ```plain
 bundle exec rake release
 ```
+
+This will perform some sanity checks, tag the current commit with the version number, and bump the version number to ensure no conflict will happen by mistake.
 
 ## License
 
