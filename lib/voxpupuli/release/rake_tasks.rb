@@ -80,7 +80,7 @@ begin
       changelog_file = 'CHANGELOG.md'
       changelog_txt = File.read(changelog_file)
       new_contents = changelog_txt.gsub(%r{\r\n}, "\n")
-      File.open(changelog_file, "w") {|file| file.puts new_contents }
+      File.write(changelog_file, new_contents)
     end
   end
 rescue Blacksmith::Error
