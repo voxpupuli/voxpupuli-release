@@ -56,7 +56,7 @@ end
 desc "Prepare a release"
 task "release:prepare" do
   Rake::Task["release:porcelain:changelog"].invoke
-  Rake::Task["release:porcelain:reference"].invoke if File.exist?('REFERENCE.md')
+  Rake::Task["strings:generate:reference"].invoke if File.exist?('REFERENCE.md')
 end
 
 begin
@@ -87,12 +87,6 @@ rescue Blacksmith::Error
   # No metadata.json
 end
 
-desc "Generate REFERENCE.md"
-task "release:porcelain:reference", [:debug, :backtrace] do |t, args|
-  patterns = ''
-  Rake::Task['strings:generate:reference'].invoke(patterns, args[:debug], args[:backtrace])
-end
-
 # For backward compatibility
 task :changelog do
   fail <<-ERROR
@@ -109,6 +103,6 @@ task :reference do
   The "reference" task is deprecated.
 
   Prefer "release:prepare" which manage all pre-release steps, or directly run
-  the "release:porcelain:reference" task.
+  the "strings:generate:reference" task.
   ERROR
 end
