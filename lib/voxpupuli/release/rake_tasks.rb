@@ -83,8 +83,12 @@ begin
       File.write(changelog_file, new_contents)
     end
   end
-rescue Blacksmith::Error
-  # No metadata.json
+rescue LoadError, Blacksmith::Error
+  # No github_changelog_generator or no metadata.json
+  desc "Dummy"
+  task "release:porcelain:changelog" do
+    puts "Skipping CHANGELOG.md generation.  Ensure github_changelog_generator and metadata.json are present if you expected it to be generated."
+  end
 end
 
 # For backward compatibility
