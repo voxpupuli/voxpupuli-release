@@ -2,6 +2,7 @@
 
 [![License](https://img.shields.io/github/license/voxpupuli/voxpupuli-release.svg)](https://github.com/voxpupuli/voxpupuli-release/blob/master/LICENSE)
 [![Release](https://github.com/voxpupuli/voxpupuli-release/actions/workflows/release.yml/badge.svg)](https://github.com/voxpupuli/voxpupuli-release/actions/workflows/release.yml)
+[![Test](https://github.com/voxpupuli/voxpupuli-release/actions/workflows/test.yml/badge.svg)](https://github.com/voxpupuli/voxpupuli-release/actions/workflows/test.yml)
 [![RubyGem Version](https://img.shields.io/gem/v/voxpupuli-release.svg)](https://rubygems.org/gems/voxpupuli-release)
 [![RubyGem Downloads](https://img.shields.io/gem/dt/voxpupuli-release.svg)](https://rubygems.org/gems/voxpupuli-release)
 
