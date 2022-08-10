@@ -62,14 +62,43 @@ end
 begin
   require 'github_changelog_generator/task'
   require 'puppet_blacksmith'
-  GitHubChangelogGenerator::RakeTask.new "release:porcelain:changelog" do |config|
-    metadata = Blacksmith::Modulefile.new
-    config.future_release = "v#{metadata.version}" if metadata.version =~ /^\d+\.\d+.\d+$/
-    config.header = "# Changelog\n\nAll notable changes to this project will be documented in this file.\nEach new release typically also includes the latest modulesync defaults.\nThese should not affect the functionality of the module."
-    config.exclude_labels = %w{duplicate question invalid wontfix wont-fix modulesync skip-changelog}
-    config.user = metadata.metadata['name'].split(%r{[-/]}).first
-    config.user = 'voxpupuli' if config.user == "puppet"
-    config.project = metadata.metadata['name']
+
+  class GCGConfig
+    def self.user=(user)
+      @user = user
+    end
+
+    def self.user
+      @user || metadata['name'].split(%r{[-/]}).first
+    end
+
+    def self.metadata
+      @metadata ||= Blacksmith::Modulefile.new.metadata
+    end
+  end
+
+  task "release:porcelain:changelog" do
+    # This is taken from lib/github_changelog_generator/task
+    # The generator cannot be used because we want to lazyly evaluate
+    # GCGConfig.user which might be overrider in the module Rakefile.
+    options = GitHubChangelogGenerator::Parser.default_options
+    options[:user] = GCGConfig.user
+    options[:project] = GCGConfig.metadata['name']
+    options[:future_release] = "v#{GCGConfig.metadata['version']}" if GCGConfig.metadata['version'] =~ /^\d+\.\d+.\d+$/
+    options[:header] = <<~HEADER.chomp
+      # Changelog
+
+      All notable changes to this project will be documented in this file.
+      Each new release typically also includes the latest modulesync defaults.
+      These should not affect the functionality of the module.
+    HEADER
+    options[:exclude_labels] = %w{duplicate question invalid wontfix wont-fix modulesync skip-changelog}
+    generator = GitHubChangelogGenerator::Generator.new(options)
+    log = generator.compound_changelog
+    output_filename = options[:output].to_s
+    File.write(output_filename, log)
+    puts "Done!"
+    puts "Generated log placed in #{File.absolute_path(output_filename)}"
   end
 
   # Workaround for https://github.com/github-changelog-generator/github-changelog-generator/issues/715
