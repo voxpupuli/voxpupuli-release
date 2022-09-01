@@ -12,7 +12,7 @@ task :release do
   m = Blacksmith::Modulefile.new
   v = m.version
   raise "Refusing to release an RC or build-release (#{v}).\n" +
-        "Please set a semver *release* version." unless v =~ /^\d+\.\d+.\d+$/
+        "Please set a semver *release* version." unless v.match?(/^\d+\.\d+.\d+$/)
 
   # validate that the REFERENCE.md is up2date, if it exists
   Rake::Task['strings:validate:reference'].invoke if File.exist?('REFERENCE.md')
@@ -84,7 +84,7 @@ begin
     options = GitHubChangelogGenerator::Parser.default_options
     options[:user] = GCGConfig.user
     options[:project] = GCGConfig.metadata['name']
-    options[:future_release] = "v#{GCGConfig.metadata['version']}" if GCGConfig.metadata['version'] =~ /^\d+\.\d+.\d+$/
+    options[:future_release] = "v#{GCGConfig.metadata['version']}" if GCGConfig.metadata['version'].match?(/^\d+\.\d+.\d+$/)
     options[:header] = <<~HEADER.chomp
       # Changelog
 
@@ -103,7 +103,7 @@ begin
 
   # Workaround for https://github.com/github-changelog-generator/github-changelog-generator/issues/715
   require 'rbconfig'
-  if RbConfig::CONFIG['host_os'] =~ /linux/
+  if RbConfig::CONFIG['host_os'].match?(/linux/)
     task "release:porcelain:changelog" do
       puts 'Fixing line endings...'
       changelog_file = 'CHANGELOG.md'
