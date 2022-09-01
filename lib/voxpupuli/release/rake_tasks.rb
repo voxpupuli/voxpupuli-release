@@ -62,7 +62,12 @@ end
 begin
   require 'github_changelog_generator/task'
   require 'puppet_blacksmith'
-
+rescue LoadError
+  desc "Dummy"
+  task "release:porcelain:changelog" do
+    puts "Skipping CHANGELOG.md generation.  Ensure github_changelog_generator is present if you expected it to be generated."
+  end
+else
   class GCGConfig
     def self.user=(user)
       @user = user
@@ -111,12 +116,6 @@ begin
       new_contents = changelog_txt.gsub(%r{\r\n}, "\n")
       File.write(changelog_file, new_contents)
     end
-  end
-rescue LoadError, Blacksmith::Error
-  # No github_changelog_generator or no metadata.json
-  desc "Dummy"
-  task "release:porcelain:changelog" do
-    puts "Skipping CHANGELOG.md generation.  Ensure github_changelog_generator and metadata.json are present if you expected it to be generated."
   end
 end
 
