@@ -34,9 +34,9 @@ task :release do
   g.push!
 end
 
-desc 'Depreciated: use the "release" task instead'
+desc 'Deprecated: use the "release" task instead'
 task "travis_release" do
-  STDERR.puts "Depreciated: use the 'release' task instead"
+  STDERR.puts "Deprecated: use the 'release' task instead"
   Rake::Task['release'].invoke
 end
 
