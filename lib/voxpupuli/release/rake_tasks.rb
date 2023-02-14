@@ -55,8 +55,18 @@ end
 
 desc "Prepare a release"
 task "release:prepare" do
+  v = Blacksmith::Modulefile.new.version
   Rake::Task["release:porcelain:changelog"].invoke
   Rake::Task["strings:generate:reference"].invoke if File.exist?('REFERENCE.md')
+  puts <<~MESSAGE
+
+    Please review these changes and commit them to a new branch:
+
+        git checkout -b release-#{v}
+        git commit -m "Release #{v}"
+
+    Then open a Pull-Request and wait for it to be reviewed and merged).
+  MESSAGE
 end
 
 begin
