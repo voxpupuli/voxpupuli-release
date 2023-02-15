@@ -90,6 +90,24 @@ else
     def self.metadata
       @metadata ||= Blacksmith::Modulefile.new.metadata
     end
+
+    def self.tag_pattern=(tag_pattern)
+      @tag_pattern = tag_pattern
+    end
+
+    def self.tag_pattern
+      @tag_pattern || 'v%s'
+    end
+
+    def self.future_release
+      if metadata['version'].match?(/^\d+\.\d+.\d+$/)
+        format(tag_pattern, metadata['version'])
+      else
+        # Not formatted like a release, might be a pre-release and the future
+        # changes should better be under an "unreleased" section.
+        nil
+      end
+    end
   end
 
   task "release:porcelain:changelog" do
@@ -99,7 +117,7 @@ else
     options = GitHubChangelogGenerator::Parser.default_options
     options[:user] = GCGConfig.user
     options[:project] = GCGConfig.metadata['name']
-    options[:future_release] = "v#{GCGConfig.metadata['version']}" if GCGConfig.metadata['version'].match?(/^\d+\.\d+.\d+$/)
+    options[:future_release] = GCGConfig.future_release
     options[:header] = <<~HEADER.chomp
       # Changelog
 
