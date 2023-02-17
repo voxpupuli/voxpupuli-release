@@ -137,17 +137,15 @@ else
     generator = GitHubChangelogGenerator::Generator.new(options)
     log = generator.compound_changelog
     output_filename = options[:output].to_s
-    File.write(output_filename, log)
 
     # Workaround for https://github.com/github-changelog-generator/github-changelog-generator/issues/715
     require 'rbconfig'
-    if RbConfig::CONFIG['host_os'].match?(/linux/)
+    unless RbConfig::CONFIG['host_os'].match?(/windows/)
       puts 'Fixing line endings...'
-      changelog_file = 'CHANGELOG.md'
-      changelog_txt = File.read(changelog_file)
-      new_contents = changelog_txt.gsub(%r{\r\n}, "\n")
-      File.write(changelog_file, new_contents)
+      log.gsub!("\r\n", "\n")
     end
+
+    File.write(output_filename, log)
     puts "Generated log placed in #{File.absolute_path(output_filename)}"
   end
 end
