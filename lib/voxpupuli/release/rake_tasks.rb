@@ -53,100 +53,105 @@ task :check_changelog do
   end
 end
 
-desc "Prepare a release"
-task "release:prepare" do
-  v = Blacksmith::Modulefile.new.version
-  Rake::Task["release:porcelain:changelog"].invoke
-  Rake::Task["strings:generate:reference"].invoke if File.exist?('REFERENCE.md')
-  puts <<~MESSAGE
+namespace :release do
+  desc "Prepare a release"
+  task prepare: ['release:porcelain:changelog'] do
+    v = Blacksmith::Modulefile.new.version
+    Rake::Task["strings:generate:reference"].invoke if File.exist?('REFERENCE.md')
+    puts <<~MESSAGE
 
-    Please review these changes and commit them to a new branch:
+      Please review these changes and commit them to a new branch:
 
-        git checkout -b release-#{v}
-        git commit -m "Release #{v}"
+          git checkout -b release-#{v}
+          git commit -m "Release #{v}"
 
-    Then open a Pull-Request and wait for it to be reviewed and merged).
-  MESSAGE
-end
-
-begin
-  require 'github_changelog_generator/task'
-  require 'puppet_blacksmith'
-rescue LoadError
-  desc "Dummy"
-  task "release:porcelain:changelog" do
-    puts "Skipping CHANGELOG.md generation.  Ensure github_changelog_generator is present if you expected it to be generated."
+      Then open a Pull-Request and wait for it to be reviewed and merged).
+    MESSAGE
   end
-else
-  class GCGConfig
-    def self.user=(user)
-      @user = user
-    end
 
-    def self.user
-      @user || project.split(%r{[-/]}).first
-    end
-
-    def self.project=(project)
-      @project = project
-    end
-
-    def self.project
-      @project || metadata['name']
-    end
-
-    def self.metadata
-      @metadata ||= Blacksmith::Modulefile.new.metadata
-    end
-
-    def self.tag_pattern=(tag_pattern)
-      @tag_pattern = tag_pattern
-    end
-
-    def self.tag_pattern
-      @tag_pattern || 'v%s'
-    end
-
-    def self.future_release
-      if metadata['version'].match?(/^\d+\.\d+.\d+$/)
-        format(tag_pattern, metadata['version'])
-      else
-        # Not formatted like a release, might be a pre-release and the future
-        # changes should better be under an "unreleased" section.
-        nil
+  begin
+    require 'github_changelog_generator/task'
+    require 'puppet_blacksmith'
+  rescue LoadError
+    namespace :porcelain do
+      desc "Dummy"
+      task :changelog do
+        puts "Skipping CHANGELOG.md generation.  Ensure github_changelog_generator is present if you expected it to be generated."
       end
     end
-  end
+  else
+    class GCGConfig
+      def self.user=(user)
+        @user = user
+      end
 
-  task "release:porcelain:changelog" do
-    # This is taken from lib/github_changelog_generator/task
-    # The generator cannot be used because we want to lazyly evaluate
-    # GCGConfig.user which might be overrider in the module Rakefile.
-    options = GitHubChangelogGenerator::Parser.default_options
-    options[:user] = GCGConfig.user
-    options[:project] = GCGConfig.project
-    options[:future_release] = GCGConfig.future_release
-    options[:header] = <<~HEADER.chomp
-      # Changelog
+      def self.user
+        @user || project.split(%r{[-/]}).first
+      end
 
-      All notable changes to this project will be documented in this file.
-      Each new release typically also includes the latest modulesync defaults.
-      These should not affect the functionality of the module.
-    HEADER
-    options[:exclude_labels] = %w{duplicate question invalid wontfix wont-fix modulesync skip-changelog}
-    generator = GitHubChangelogGenerator::Generator.new(options)
-    log = generator.compound_changelog
-    output_filename = options[:output].to_s
+      def self.project=(project)
+        @project = project
+      end
 
-    # Workaround for https://github.com/github-changelog-generator/github-changelog-generator/issues/715
-    require 'rbconfig'
-    unless RbConfig::CONFIG['host_os'].match?(/windows/)
-      puts 'Fixing line endings...'
-      log.gsub!("\r\n", "\n")
+      def self.project
+        @project || metadata['name']
+      end
+
+      def self.metadata
+        @metadata ||= Blacksmith::Modulefile.new.metadata
+      end
+
+      def self.tag_pattern=(tag_pattern)
+        @tag_pattern = tag_pattern
+      end
+
+      def self.tag_pattern
+        @tag_pattern || 'v%s'
+      end
+
+      def self.future_release
+        if metadata['version'].match?(/^\d+\.\d+.\d+$/)
+          format(tag_pattern, metadata['version'])
+        else
+          # Not formatted like a release, might be a pre-release and the future
+          # changes should better be under an "unreleased" section.
+          nil
+        end
+      end
     end
 
-    File.write(output_filename, log)
-    puts "Generated log placed in #{File.absolute_path(output_filename)}"
+    namespace :porcelain do
+      task :changelog do
+        # This is taken from lib/github_changelog_generator/task
+        # The generator cannot be used because we want to lazyly evaluate
+        # GCGConfig.user which might be overrider in the module Rakefile.
+        options = GitHubChangelogGenerator::Parser.default_options
+        options[:user] = GCGConfig.user
+        options[:project] = GCGConfig.project
+        options[:future_release] = GCGConfig.future_release
+        options[:header] = <<~HEADER.chomp
+          # Changelog
+
+          All notable changes to this project will be documented in this file.
+          Each new release typically also includes the latest modulesync defaults.
+          These should not affect the functionality of the module.
+        HEADER
+        options[:exclude_labels] = %w{duplicate question invalid wontfix wont-fix modulesync skip-changelog}
+        generator = GitHubChangelogGenerator::Generator.new(options)
+        log = generator.compound_changelog
+        output_filename = options[:output].to_s
+
+        # Workaround for https://github.com/github-changelog-generator/github-changelog-generator/issues/715
+        require 'rbconfig'
+        unless RbConfig::CONFIG['host_os'].match?(/windows/)
+          puts 'Fixing line endings...'
+          log.gsub!("\r\n", "\n")
+        end
+
+        File.write(output_filename, log)
+        puts "Generated log placed in #{File.absolute_path(output_filename)}"
+      end
+    end
   end
 end
 
