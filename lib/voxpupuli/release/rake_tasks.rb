@@ -84,7 +84,15 @@ else
     end
 
     def self.user
-      @user || metadata['name'].split(%r{[-/]}).first
+      @user || project.split(%r{[-/]}).first
+    end
+
+    def self.project=(project)
+      @project = project
+    end
+
+    def self.project
+      @project || metadata['name']
     end
 
     def self.metadata
@@ -116,7 +124,7 @@ else
     # GCGConfig.user which might be overrider in the module Rakefile.
     options = GitHubChangelogGenerator::Parser.default_options
     options[:user] = GCGConfig.user
-    options[:project] = GCGConfig.metadata['name']
+    options[:project] = GCGConfig.project
     options[:future_release] = GCGConfig.future_release
     options[:header] = <<~HEADER.chomp
       # Changelog
