@@ -18,6 +18,7 @@ class GCGConfig
   end
 
   def self.metadata
+    require 'puppet_blacksmith'
     @metadata ||= Blacksmith::Modulefile.new.metadata
   end
 
@@ -112,7 +113,6 @@ namespace :release do
   namespace :porcelain do
     begin
       require 'github_changelog_generator/task'
-      require 'puppet_blacksmith'
     rescue LoadError
       desc "Dummy"
       task :changelog do
