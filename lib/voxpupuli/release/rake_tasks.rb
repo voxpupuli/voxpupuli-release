@@ -1,5 +1,45 @@
 require 'puppet_blacksmith/rake_tasks'
 
+class GCGConfig
+  def self.user=(user)
+    @user = user
+  end
+
+  def self.user
+    @user || project.split(%r{[-/]}).first
+  end
+
+  def self.project=(project)
+    @project = project
+  end
+
+  def self.project
+    @project || metadata['name']
+  end
+
+  def self.metadata
+    @metadata ||= Blacksmith::Modulefile.new.metadata
+  end
+
+  def self.tag_pattern=(tag_pattern)
+    @tag_pattern = tag_pattern
+  end
+
+  def self.tag_pattern
+    @tag_pattern || 'v%s'
+  end
+
+  def self.future_release
+    if metadata['version'].match?(/^\d+\.\d+.\d+$/)
+      format(tag_pattern, metadata['version'])
+    else
+      # Not formatted like a release, might be a pre-release and the future
+      # changes should better be under an "unreleased" section.
+      nil
+    end
+  end
+end
+
 desc 'Release via GitHub Actions'
 task :release do
   Blacksmith::RakeTask.new do |t|
@@ -80,46 +120,6 @@ namespace :release do
       end
     end
   else
-    class GCGConfig
-      def self.user=(user)
-        @user = user
-      end
-
-      def self.user
-        @user || project.split(%r{[-/]}).first
-      end
-
-      def self.project=(project)
-        @project = project
-      end
-
-      def self.project
-        @project || metadata['name']
-      end
-
-      def self.metadata
-        @metadata ||= Blacksmith::Modulefile.new.metadata
-      end
-
-      def self.tag_pattern=(tag_pattern)
-        @tag_pattern = tag_pattern
-      end
-
-      def self.tag_pattern
-        @tag_pattern || 'v%s'
-      end
-
-      def self.future_release
-        if metadata['version'].match?(/^\d+\.\d+.\d+$/)
-          format(tag_pattern, metadata['version'])
-        else
-          # Not formatted like a release, might be a pre-release and the future
-          # changes should better be under an "unreleased" section.
-          nil
-        end
-      end
-    end
-
     namespace :porcelain do
       task :changelog do
         # This is taken from lib/github_changelog_generator/task
