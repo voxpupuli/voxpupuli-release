@@ -109,18 +109,16 @@ namespace :release do
     MESSAGE
   end
 
-  begin
-    require 'github_changelog_generator/task'
-    require 'puppet_blacksmith'
-  rescue LoadError
-    namespace :porcelain do
+  namespace :porcelain do
+    begin
+      require 'github_changelog_generator/task'
+      require 'puppet_blacksmith'
+    rescue LoadError
       desc "Dummy"
       task :changelog do
         puts "Skipping CHANGELOG.md generation.  Ensure github_changelog_generator is present if you expected it to be generated."
       end
-    end
-  else
-    namespace :porcelain do
+    else
       task :changelog do
         # This is taken from lib/github_changelog_generator/task
         # The generator cannot be used because we want to lazyly evaluate
