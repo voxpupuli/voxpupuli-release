@@ -1,5 +1,46 @@
 require 'puppet_blacksmith/rake_tasks'
 
+class GCGConfig
+  def self.user=(user)
+    @user = user
+  end
+
+  def self.user
+    @user || project.split(%r{[-/]}).first
+  end
+
+  def self.project=(project)
+    @project = project
+  end
+
+  def self.project
+    @project || metadata['name']
+  end
+
+  def self.metadata
+    require 'puppet_blacksmith'
+    @metadata ||= Blacksmith::Modulefile.new.metadata
+  end
+
+  def self.tag_pattern=(tag_pattern)
+    @tag_pattern = tag_pattern
+  end
+
+  def self.tag_pattern
+    @tag_pattern || 'v%s'
+  end
+
+  def self.future_release
+    if metadata['version'].match?(/^\d+\.\d+.\d+$/)
+      format(tag_pattern, metadata['version'])
+    else
+      # Not formatted like a release, might be a pre-release and the future
+      # changes should better be under an "unreleased" section.
+      nil
+    end
+  end
+end
+
 desc 'Release via GitHub Actions'
 task :release do
   Blacksmith::RakeTask.new do |t|
@@ -12,7 +53,7 @@ task :release do
   m = Blacksmith::Modulefile.new
   v = m.version
   raise "Refusing to release an RC or build-release (#{v}).\n" +
-        "Please set a semver *release* version." unless v =~ /^\d+\.\d+.\d+$/
+        "Please set a semver *release* version." unless v.match?(/^\d+\.\d+.\d+$/)
 
   # validate that the REFERENCE.md is up2date, if it exists
   Rake::Task['strings:validate:reference'].invoke if File.exist?('REFERENCE.md')
@@ -51,4 +92,83 @@ task :check_changelog do
   if File.readlines('CHANGELOG.md').grep( /^(#.+[Rr]eleas.+#{Regexp.escape(v)}|## \[v?#{Regexp.escape(v)}\])/ ).empty?
     fail "Unable to find a CHANGELOG.md entry for the #{v} release."
   end
+end
+
+namespace :release do
+  desc "Prepare a release"
+  task prepare: ['release:porcelain:changelog'] do
+    v = Blacksmith::Modulefile.new.version
+    Rake::Task["strings:generate:reference"].invoke if File.exist?('REFERENCE.md')
+    puts <<~MESSAGE
+
+      Please review these changes and commit them to a new branch:
+
+          git checkout -b release-#{v}
+          git commit -m "Release #{v}"
+
+      Then open a Pull-Request and wait for it to be reviewed and merged).
+    MESSAGE
+  end
+
+  namespace :porcelain do
+    begin
+      require 'github_changelog_generator/task'
+    rescue LoadError
+      desc "Dummy"
+      task :changelog do
+        puts "Skipping CHANGELOG.md generation.  Ensure github_changelog_generator is present if you expected it to be generated."
+      end
+    else
+      task :changelog do
+        # This is taken from lib/github_changelog_generator/task
+        # The generator cannot be used because we want to lazyly evaluate
+        # GCGConfig.user which might be overrider in the module Rakefile.
+        options = GitHubChangelogGenerator::Parser.default_options
+        options[:user] = GCGConfig.user
+        options[:project] = GCGConfig.project
+        options[:future_release] = GCGConfig.future_release
+        options[:header] = <<~HEADER.chomp
+          # Changelog
+
+          All notable changes to this project will be documented in this file.
+          Each new release typically also includes the latest modulesync defaults.
+          These should not affect the functionality of the module.
+        HEADER
+        options[:exclude_labels] = %w{duplicate question invalid wontfix wont-fix modulesync skip-changelog}
+        generator = GitHubChangelogGenerator::Generator.new(options)
+        log = generator.compound_changelog
+        output_filename = options[:output].to_s
+
+        # Workaround for https://github.com/github-changelog-generator/github-changelog-generator/issues/715
+        require 'rbconfig'
+        unless RbConfig::CONFIG['host_os'].match?(/windows/)
+          puts 'Fixing line endings...'
+          log.gsub!("\r\n", "\n")
+        end
+
+        File.write(output_filename, log)
+        puts "Generated log placed in #{File.absolute_path(output_filename)}"
+      end
+    end
+  end
+end
+
+# For backward compatibility
+task :changelog do
+  fail <<-ERROR
+  The "changelog" task is deprecated.
+
+  Prefer "release:prepare" which manage all pre-release steps, or directly run
+  the "release:porcelain:changelog" task.
+  ERROR
+end
+
+# For backward compatibility
+task :reference do
+  fail <<-ERROR
+  The "reference" task is deprecated.
+
+  Prefer "release:prepare" which manage all pre-release steps, or directly run
+  the "strings:generate:reference" task.
+  ERROR
 end
