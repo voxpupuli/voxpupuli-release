@@ -2,6 +2,30 @@
 
 All notable changes to this project will be documented in this file.
 
+## [v2.0.0](https://github.com/voxpupuli/voxpupuli-release/tree/v2.0.0) (2023-02-21)
+
+[Full Changelog](https://github.com/voxpupuli/voxpupuli-release/compare/v1.3.0...v2.0.0)
+
+**Breaking changes:**
+
+- Drop Ruby 2.4 support [\#46](https://github.com/voxpupuli/voxpupuli-release/pull/46) ([bastelfreak](https://github.com/bastelfreak))
+
+**Implemented enhancements:**
+
+- Rework release preparation tasks [\#44](https://github.com/voxpupuli/voxpupuli-release/pull/44) ([smortex](https://github.com/smortex))
+- Add Ruby 3.1 to CI matrix [\#43](https://github.com/voxpupuli/voxpupuli-release/pull/43) ([bastelfreak](https://github.com/bastelfreak))
+
+**Fixed bugs:**
+
+- README.md: Fix link to LICENSE file [\#42](https://github.com/voxpupuli/voxpupuli-release/pull/42) ([bastelfreak](https://github.com/bastelfreak))
+
+**Merged pull requests:**
+
+- dependabot: check for github actions as well [\#49](https://github.com/voxpupuli/voxpupuli-release/pull/49) ([bastelfreak](https://github.com/bastelfreak))
+- Add Ruby 3.2 to CI matrix [\#48](https://github.com/voxpupuli/voxpupuli-release/pull/48) ([bastelfreak](https://github.com/bastelfreak))
+- Replace `Depreciated` with `Deprecated` [\#47](https://github.com/voxpupuli/voxpupuli-release/pull/47) ([alexjfisher](https://github.com/alexjfisher))
+- Add Test badge [\#45](https://github.com/voxpupuli/voxpupuli-release/pull/45) ([bastelfreak](https://github.com/bastelfreak))
+
 ## [v1.3.0](https://github.com/voxpupuli/voxpupuli-release/tree/v1.3.0) (2021-12-08)
 
 [Full Changelog](https://github.com/voxpupuli/voxpupuli-release/compare/v1.2.1...v1.3.0)
