@@ -155,20 +155,22 @@ end
 
 # For backward compatibility
 task :changelog do
-  fail <<-ERROR
+  $stderr.puts <<-ERROR
   The "changelog" task is deprecated.
 
   Prefer "release:prepare" which manage all pre-release steps, or directly run
   the "release:porcelain:changelog" task.
   ERROR
+  exit(1)
 end
 
 # For backward compatibility
 task :reference do
-  fail <<-ERROR
+  $stderr.puts <<-ERROR
   The "reference" task is deprecated.
 
   Prefer "release:prepare" which manage all pre-release steps, or directly run
   the "strings:generate:reference" task.
   ERROR
+  exit(1)
 end
