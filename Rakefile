@@ -10,6 +10,9 @@ end
 
 begin
   require 'github_changelog_generator/task'
+rescue LoadError
+  # github_changelog_generator is an optional group
+else
   GitHubChangelogGenerator::RakeTask.new :changelog do |config|
     version = Voxpupuli::Release::VERSION
     config.future_release = "v#{version}" if version =~ /^\d+\.\d+.\d+$/
@@ -18,5 +21,4 @@ begin
     config.user = 'voxpupuli'
     config.project = 'voxpupuli-release'
   end
-rescue LoadError
 end
