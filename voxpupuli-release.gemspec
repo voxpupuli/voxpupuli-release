@@ -17,9 +17,9 @@ Gem::Specification.new do |s|
   s.executables = `git ls-files -- bin/*`.split("\n").map { |f| File.basename(f) }
 
   # Runtime dependencies, but also probably dependencies of requiring projects
-  s.add_runtime_dependency 'puppet-blacksmith', '>= 4.0.0'
-  s.add_runtime_dependency 'puppet-strings', '>= 2.9.0'
-  s.add_runtime_dependency 'rake'
+  s.add_runtime_dependency 'puppet-blacksmith', '~> 7.0'
+  s.add_runtime_dependency 'puppet-strings', '~> 4'
+  s.add_runtime_dependency 'rake', '~> 13.0', '>= 13.0.6'
 
   s.add_development_dependency 'voxpupuli-rubocop', '~> 1.2'
 end
