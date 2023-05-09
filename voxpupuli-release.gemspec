@@ -8,7 +8,6 @@ Gem::Specification.new do |s|
   s.email       = ['voxpupuli@groups.io']
   s.homepage    = 'https://github.com/voxpupuli/voxpupuli-release'
   s.summary     = 'Helpers for deploying Vox Pupuli modules'
-  s.description = s.summary
   s.licenses    = 'Apache-2.0'
 
   s.required_ruby_version = '>= 2.7', '< 4'
