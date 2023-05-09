@@ -8,7 +8,6 @@ Gem::Specification.new do |s|
   s.email       = ['voxpupuli@groups.io']
   s.homepage    = 'https://github.com/voxpupuli/voxpupuli-release'
   s.summary     = 'Helpers for deploying Vox Pupuli modules'
-  s.description = s.summary
   s.licenses    = 'Apache-2.0'
 
   s.required_ruby_version = '>= 2.7', '< 4'
@@ -17,9 +16,9 @@ Gem::Specification.new do |s|
   s.executables = `git ls-files -- bin/*`.split("\n").map { |f| File.basename(f) }
 
   # Runtime dependencies, but also probably dependencies of requiring projects
-  s.add_runtime_dependency 'puppet-blacksmith', '>= 4.0.0'
-  s.add_runtime_dependency 'puppet-strings', '>= 2.9.0'
-  s.add_runtime_dependency 'rake'
+  s.add_runtime_dependency 'puppet-blacksmith', '~> 7.0'
+  s.add_runtime_dependency 'puppet-strings', '~> 4'
+  s.add_runtime_dependency 'rake', '~> 13.0', '>= 13.0.6'
 
   s.add_development_dependency 'voxpupuli-rubocop', '~> 1.2'
 end
