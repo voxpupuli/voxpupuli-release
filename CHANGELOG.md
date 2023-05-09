@@ -2,7 +2,23 @@
 
 All notable changes to this project will be documented in this file.
 
-## [v2.0.0](https://github.com/voxpupuli/voxpupuli-release/tree/v2.0.0) (2023-02-21)
+## [v3.0.0](https://github.com/voxpupuli/voxpupuli-release/tree/v3.0.0) (2023-05-09)
+
+[Full Changelog](https://github.com/voxpupuli/voxpupuli-release/compare/v2.0.0...v3.0.0)
+
+**Breaking changes:**
+
+- Drop Ruby 2.5/2.6 support; introduce voxpupuli-rubocop; cleanup CI [\#53](https://github.com/voxpupuli/voxpupuli-release/pull/53) ([bastelfreak](https://github.com/bastelfreak))
+
+**Implemented enhancements:**
+
+- Avoid producing a backtrace for deprecated tasks [\#52](https://github.com/voxpupuli/voxpupuli-release/pull/52) ([smortex](https://github.com/smortex))
+
+**Merged pull requests:**
+
+- gemspec: Add version constraints for dependencies & build gem with strictness and verbosity [\#54](https://github.com/voxpupuli/voxpupuli-release/pull/54) ([bastelfreak](https://github.com/bastelfreak))
+
+## [v2.0.0](https://github.com/voxpupuli/voxpupuli-release/tree/v2.0.0) (2023-02-22)
 
 [Full Changelog](https://github.com/voxpupuli/voxpupuli-release/compare/v1.3.0...v2.0.0)
 
@@ -21,6 +37,7 @@ All notable changes to this project will be documented in this file.
 
 **Merged pull requests:**
 
+- Bump actions/checkout from 2 to 3 [\#50](https://github.com/voxpupuli/voxpupuli-release/pull/50) ([dependabot[bot]](https://github.com/apps/dependabot))
 - dependabot: check for github actions as well [\#49](https://github.com/voxpupuli/voxpupuli-release/pull/49) ([bastelfreak](https://github.com/bastelfreak))
 - Add Ruby 3.2 to CI matrix [\#48](https://github.com/voxpupuli/voxpupuli-release/pull/48) ([bastelfreak](https://github.com/bastelfreak))
 - Replace `Depreciated` with `Deprecated` [\#47](https://github.com/voxpupuli/voxpupuli-release/pull/47) ([alexjfisher](https://github.com/alexjfisher))
