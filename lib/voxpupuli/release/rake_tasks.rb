@@ -106,7 +106,7 @@ namespace :release do
       Please review these changes and commit them to a new branch:
 
           git checkout -b release-#{v}
-          git commit -m "Release #{v}"
+          git commit --gpg-sign -m "Release #{v}"
 
       Then open a Pull-Request and wait for it to be reviewed and merged).
     MESSAGE
