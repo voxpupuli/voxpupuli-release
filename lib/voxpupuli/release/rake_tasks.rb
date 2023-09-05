@@ -31,7 +31,7 @@ class GCGConfig
   end
 
   def self.future_release
-    if metadata['version'].match?(/^\d+\.\d+.\d+$/)
+    if metadata['version'].match?(/^\d+\.\d+\.\d+$/)
       format(tag_pattern, metadata['version'])
     else
       # Not formatted like a release, might be a pre-release and the future
@@ -52,7 +52,7 @@ task :release do
 
   m = Blacksmith::Modulefile.new
   v = m.version
-  unless v.match?(/^\d+\.\d+.\d+$/)
+  unless v.match?(/^\d+\.\d+\.\d+$/)
     raise "Refusing to release an RC or build-release (#{v}).\n" +
           'Please set a semver *release* version.'
   end
