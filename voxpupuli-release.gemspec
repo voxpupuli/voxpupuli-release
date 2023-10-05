@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 $LOAD_PATH.unshift File.expand_path('lib', __dir__)
 require 'voxpupuli/release/version'
 
@@ -20,5 +22,5 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency 'puppet-strings', '~> 4'
   s.add_runtime_dependency 'rake', '~> 13.0', '>= 13.0.6'
 
-  s.add_development_dependency 'voxpupuli-rubocop', '~> 1.2'
+  s.add_development_dependency 'voxpupuli-rubocop', '~> 2.0.0'
 end

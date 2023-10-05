@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'puppet_blacksmith/rake_tasks'
 
 class GCGConfig
@@ -53,7 +55,7 @@ task :release do
   m = Blacksmith::Modulefile.new
   v = m.version
   unless v.match?(/^\d+\.\d+\.\d+$/)
-    raise "Refusing to release an RC or build-release (#{v}).\n" +
+    raise "Refusing to release an RC or build-release (#{v}).\n" \
           'Please set a semver *release* version.'
   end
 
@@ -142,7 +144,7 @@ namespace :release do
 
       # Workaround for https://github.com/github-changelog-generator/github-changelog-generator/issues/715
       require 'rbconfig'
-      unless RbConfig::CONFIG['host_os'].match?(/windows/)
+      unless RbConfig::CONFIG['host_os'].include?('windows')
         puts 'Fixing line endings...'
         log.gsub!("\r\n", "\n")
       end
