@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file.
 
+## [v3.0.1](https://github.com/voxpupuli/voxpupuli-release/tree/v3.0.1) (2023-10-05)
+
+[Full Changelog](https://github.com/voxpupuli/voxpupuli-release/compare/v3.0.0...v3.0.1)
+
+**Fixed bugs:**
+
+- Add github\_changelog\_generator & faraday-retry as dependencies [\#60](https://github.com/voxpupuli/voxpupuli-release/pull/60) ([bastelfreak](https://github.com/bastelfreak))
+- rake tasks: fix regexp escaping [\#59](https://github.com/voxpupuli/voxpupuli-release/pull/59) ([kenyon](https://github.com/kenyon))
+
+**Merged pull requests:**
+
+- voxpupuli-rubocop: Use 2.x [\#61](https://github.com/voxpupuli/voxpupuli-release/pull/61) ([bastelfreak](https://github.com/bastelfreak))
+- CI: Run on PRs+merges to master [\#57](https://github.com/voxpupuli/voxpupuli-release/pull/57) ([bastelfreak](https://github.com/bastelfreak))
+- Encourage a signed commit [\#56](https://github.com/voxpupuli/voxpupuli-release/pull/56) ([traylenator](https://github.com/traylenator))
+
 ## [v3.0.0](https://github.com/voxpupuli/voxpupuli-release/tree/v3.0.0) (2023-05-09)
 
 [Full Changelog](https://github.com/voxpupuli/voxpupuli-release/compare/v2.0.0...v3.0.0)
@@ -37,7 +52,6 @@ All notable changes to this project will be documented in this file.
 
 **Merged pull requests:**
 
-- Bump actions/checkout from 2 to 3 [\#50](https://github.com/voxpupuli/voxpupuli-release/pull/50) ([dependabot[bot]](https://github.com/apps/dependabot))
 - dependabot: check for github actions as well [\#49](https://github.com/voxpupuli/voxpupuli-release/pull/49) ([bastelfreak](https://github.com/bastelfreak))
 - Add Ruby 3.2 to CI matrix [\#48](https://github.com/voxpupuli/voxpupuli-release/pull/48) ([bastelfreak](https://github.com/bastelfreak))
 - Replace `Depreciated` with `Deprecated` [\#47](https://github.com/voxpupuli/voxpupuli-release/pull/47) ([alexjfisher](https://github.com/alexjfisher))
