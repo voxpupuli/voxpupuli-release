@@ -24,5 +24,5 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency 'puppet-strings', '~> 4'
   s.add_runtime_dependency 'rake', '~> 13.0', '>= 13.0.6'
 
-  s.add_development_dependency 'voxpupuli-rubocop', '~> 2.0.0'
+  s.add_development_dependency 'voxpupuli-rubocop', '~> 2.5.0'
 end
