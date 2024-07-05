@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file.
 
+## [v3.1.0](https://github.com/voxpupuli/voxpupuli-release/tree/v3.1.0) (2024-07-05)
+
+[Full Changelog](https://github.com/voxpupuli/voxpupuli-release/compare/v3.0.1...v3.1.0)
+
+**Implemented enhancements:**
+
+- Add Ruby 3.3 to CI [\#66](https://github.com/voxpupuli/voxpupuli-release/pull/66) ([bastelfreak](https://github.com/bastelfreak))
+- voxpupuli-rubocop: Update to 2.5.0 [\#65](https://github.com/voxpupuli/voxpupuli-release/pull/65) ([bastelfreak](https://github.com/bastelfreak))
+
+**Fixed bugs:**
+
+- release:prep task: actually commit files [\#64](https://github.com/voxpupuli/voxpupuli-release/pull/64) ([bastelfreak](https://github.com/bastelfreak))
+
+**Merged pull requests:**
+
+- voxpupuli-rubocop: Update to 2.8.0 [\#67](https://github.com/voxpupuli/voxpupuli-release/pull/67) ([bastelfreak](https://github.com/bastelfreak))
+
 ## [v3.0.1](https://github.com/voxpupuli/voxpupuli-release/tree/v3.0.1) (2023-10-05)
 
 [Full Changelog](https://github.com/voxpupuli/voxpupuli-release/compare/v3.0.0...v3.0.1)
