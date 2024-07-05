@@ -149,14 +149,3 @@ namespace :release do
     end
   end
 end
-
-# For backward compatibility
-task :changelog do
-  warn <<-ERROR
-  The "changelog" task is deprecated.
-
-  Prefer "release:prepare" which manage all pre-release steps, or directly run
-  the "release:porcelain:changelog" task.
-  ERROR
-  exit(1)
-end
