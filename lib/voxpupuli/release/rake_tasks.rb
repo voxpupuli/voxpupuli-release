@@ -79,12 +79,6 @@ task :release do
   g.push!
 end
 
-desc 'Deprecated: use the "release" task instead'
-task 'travis_release' do
-  warn "Deprecated: use the 'release' task instead"
-  Rake::Task['release'].invoke
-end
-
 desc 'Check Changelog.'
 task :check_changelog do
   v = Blacksmith::Modulefile.new.version
