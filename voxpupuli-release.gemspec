@@ -18,11 +18,11 @@ Gem::Specification.new do |s|
   s.executables = `git ls-files -- bin/*`.split("\n").map { |f| File.basename(f) }
 
   # Runtime dependencies, but also probably dependencies of requiring projects
-  s.add_runtime_dependency 'faraday-retry', '~> 2.1'
-  s.add_runtime_dependency 'github_changelog_generator', '~> 1.16', '>= 1.16.4'
-  s.add_runtime_dependency 'puppet-blacksmith', '~> 8.0'
-  s.add_runtime_dependency 'puppet-strings', '~> 4'
-  s.add_runtime_dependency 'rake', '~> 13.0', '>= 13.0.6'
+  s.add_dependency 'faraday-retry', '~> 2.1'
+  s.add_dependency 'github_changelog_generator', '~> 1.16', '>= 1.16.4'
+  s.add_dependency 'puppet-blacksmith', '~> 8.0'
+  s.add_dependency 'puppet-strings', '~> 4'
+  s.add_dependency 'rake', '~> 13.0', '>= 13.0.6'
 
-  s.add_development_dependency 'voxpupuli-rubocop', '~> 2.8.0'
+  s.add_development_dependency 'voxpupuli-rubocop', '~> 3.0.0'
 end
