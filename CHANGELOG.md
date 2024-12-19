@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## [v3.2.0](https://github.com/voxpupuli/voxpupuli-release/tree/v3.2.0) (2024-12-19)
+
+[Full Changelog](https://github.com/voxpupuli/voxpupuli-release/compare/v3.1.0...v3.2.0)
+
+**Implemented enhancements:**
+
+- puppet-modulebuilder: Switch to 2.x; use file allowlist when building modules [\#72](https://github.com/voxpupuli/voxpupuli-release/pull/72) ([bastelfreak](https://github.com/bastelfreak))
+
 ## [v3.1.0](https://github.com/voxpupuli/voxpupuli-release/tree/v3.1.0) (2024-07-05)
 
 [Full Changelog](https://github.com/voxpupuli/voxpupuli-release/compare/v3.0.1...v3.1.0)
