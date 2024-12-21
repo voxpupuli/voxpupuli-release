@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## [v3.2.1](https://github.com/voxpupuli/voxpupuli-release/tree/v3.2.1) (2024-12-21)
+
+[Full Changelog](https://github.com/voxpupuli/voxpupuli-release/compare/v3.2.0...v3.2.1)
+
+**Fixed bugs:**
+
+- Require puppet-strings rake tasks [\#75](https://github.com/voxpupuli/voxpupuli-release/pull/75) ([bastelfreak](https://github.com/bastelfreak))
+
 ## [v3.2.0](https://github.com/voxpupuli/voxpupuli-release/tree/v3.2.0) (2024-12-19)
 
 [Full Changelog](https://github.com/voxpupuli/voxpupuli-release/compare/v3.1.0...v3.2.0)
