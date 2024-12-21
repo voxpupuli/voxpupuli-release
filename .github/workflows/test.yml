@@ -40,8 +40,8 @@ jobs:
         with:
           ruby-version: ${{ matrix.ruby }}
           bundler-cache: true
-      - name: Run tests
-        run: bundle exec rake --rakefile Rakefile_ci -T | grep release
+      - name: check that required tasks are available
+        run: bundle exec rake --rakefile Rakefile_ci -T | grep --regexp 'rake strings' --regexp 'rake release' --quiet
       - name: Verify gem builds
         run: gem build --strict --verbose *.gemspec
 
