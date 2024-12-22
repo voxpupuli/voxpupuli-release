@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## [v3.2.3](https://github.com/voxpupuli/voxpupuli-release/tree/v3.2.3) (2024-12-22)
+
+[Full Changelog](https://github.com/voxpupuli/voxpupuli-release/compare/v3.2.2...v3.2.3)
+
+**Fixed bugs:**
+
+- Add racc dependency [\#80](https://github.com/voxpupuli/voxpupuli-release/pull/80) ([bastelfreak](https://github.com/bastelfreak))
+
 ## [v3.2.2](https://github.com/voxpupuli/voxpupuli-release/tree/v3.2.2) (2024-12-22)
 
 [Full Changelog](https://github.com/voxpupuli/voxpupuli-release/compare/v3.2.1...v3.2.2)
