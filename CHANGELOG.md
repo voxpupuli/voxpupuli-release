@@ -2,7 +2,15 @@
 
 All notable changes to this project will be documented in this file.
 
-## [v3.2.1](https://github.com/voxpupuli/voxpupuli-release/tree/v3.2.1) (2024-12-21)
+## [v3.2.2](https://github.com/voxpupuli/voxpupuli-release/tree/v3.2.2) (2024-12-22)
+
+[Full Changelog](https://github.com/voxpupuli/voxpupuli-release/compare/v3.2.1...v3.2.2)
+
+**Fixed bugs:**
+
+- Add puppet as runtime dependency [\#78](https://github.com/voxpupuli/voxpupuli-release/pull/78) ([bastelfreak](https://github.com/bastelfreak))
+
+## [v3.2.1](https://github.com/voxpupuli/voxpupuli-release/tree/v3.2.1) (2024-12-22)
 
 [Full Changelog](https://github.com/voxpupuli/voxpupuli-release/compare/v3.2.0...v3.2.1)
 
