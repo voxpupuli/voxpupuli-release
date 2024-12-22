@@ -24,6 +24,8 @@ Gem::Specification.new do |s|
   s.add_dependency 'puppet-strings', '~> 4'
   # workaround for https://github.com/puppetlabs/puppet-strings/pull/404
   s.add_dependency 'puppet', '>= 7', '< 9'
+  # workaround for https://github.com/puppetlabs/puppet/issues/9535
+  s.add_dependency 'racc', '~> 1.8', '>= 1.8.1'
   s.add_dependency 'rake', '~> 13.0', '>= 13.0.6'
 
   s.add_development_dependency 'voxpupuli-rubocop', '~> 3.0.0'
