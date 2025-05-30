@@ -20,12 +20,8 @@ Gem::Specification.new do |s|
   # Runtime dependencies, but also probably dependencies of requiring projects
   s.add_dependency 'faraday-retry', '~> 2.1'
   s.add_dependency 'github_changelog_generator', '~> 1.16', '>= 1.16.4'
+  s.add_dependency 'openvox-strings', '~> 5'
   s.add_dependency 'puppet-blacksmith', '~> 8.0'
-  s.add_dependency 'puppet-strings', '~> 4'
-  # workaround for https://github.com/puppetlabs/puppet-strings/pull/404
-  s.add_dependency 'puppet', '>= 7', '< 9'
-  # workaround for https://github.com/puppetlabs/puppet/issues/9535
-  s.add_dependency 'racc', '~> 1.8', '>= 1.8.1'
   s.add_dependency 'rake', '~> 13.0', '>= 13.0.6'
 
   s.add_development_dependency 'voxpupuli-rubocop', '~> 3.0.0'
