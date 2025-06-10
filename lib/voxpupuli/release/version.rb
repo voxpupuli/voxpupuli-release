@@ -2,6 +2,6 @@
 
 module Voxpupuli
   module Release
-    VERSION = '3.2.3'
+    VERSION = '4.0.0'
   end
 end

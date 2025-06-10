@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file.
 
+## [v4.0.0](https://github.com/voxpupuli/voxpupuli-release/tree/v4.0.0) (2025-06-10)
+
+[Full Changelog](https://github.com/voxpupuli/voxpupuli-release/compare/v3.2.3...v4.0.0)
+
+**Breaking changes:**
+
+- Switch from puppet to openvox [\#82](https://github.com/voxpupuli/voxpupuli-release/pull/82) ([bastelfreak](https://github.com/bastelfreak))
+- Remove deprecated reference task [\#70](https://github.com/voxpupuli/voxpupuli-release/pull/70) ([bastelfreak](https://github.com/bastelfreak))
+- Remove deprecated changelog task [\#69](https://github.com/voxpupuli/voxpupuli-release/pull/69) ([bastelfreak](https://github.com/bastelfreak))
+- Remove deprecated travis\_release task [\#68](https://github.com/voxpupuli/voxpupuli-release/pull/68) ([bastelfreak](https://github.com/bastelfreak))
+
 ## [v3.2.3](https://github.com/voxpupuli/voxpupuli-release/tree/v3.2.3) (2024-12-22)
 
 [Full Changelog](https://github.com/voxpupuli/voxpupuli-release/compare/v3.2.2...v3.2.3)
