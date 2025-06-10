@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'puppet_blacksmith/rake_tasks'
-require 'puppet-strings/tasks'
+require 'openvox-strings/tasks'
 
 class GCGConfig
   class << self
