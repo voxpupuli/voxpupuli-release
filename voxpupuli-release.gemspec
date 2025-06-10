@@ -24,5 +24,5 @@ Gem::Specification.new do |s|
   s.add_dependency 'puppet-blacksmith', '~> 8.0'
   s.add_dependency 'rake', '~> 13.0', '>= 13.0.6'
 
-  s.add_development_dependency 'voxpupuli-rubocop', '~> 3.0.0'
+  s.add_development_dependency 'voxpupuli-rubocop', '~> 3.1.0'
 end
