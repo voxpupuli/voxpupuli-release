@@ -12,7 +12,7 @@ Gem::Specification.new do |s|
   s.summary     = 'Helpers for deploying Vox Pupuli modules'
   s.licenses    = 'Apache-2.0'
 
-  s.required_ruby_version = '>= 2.7', '< 4'
+  s.required_ruby_version = '>= 3.2'
 
   s.files       = `git ls-files`.split("\n")
   s.executables = `git ls-files -- bin/*`.split("\n").map { |f| File.basename(f) }
@@ -24,5 +24,5 @@ Gem::Specification.new do |s|
   s.add_dependency 'puppet-blacksmith', '~> 8.0'
   s.add_dependency 'rake', '~> 13.0', '>= 13.0.6'
 
-  s.add_development_dependency 'voxpupuli-rubocop', '~> 3.1.0'
+  s.add_development_dependency 'voxpupuli-rubocop', '~> 4.2.0'
 end
