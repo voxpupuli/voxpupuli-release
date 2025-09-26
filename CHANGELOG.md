@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file.
 
+## [v5.0.0](https://github.com/voxpupuli/voxpupuli-release/tree/v5.0.0) (2025-09-26)
+
+[Full Changelog](https://github.com/voxpupuli/voxpupuli-release/compare/v4.0.0...v5.0.0)
+
+**Breaking changes:**
+
+- Require Ruby 3.2+ [\#88](https://github.com/voxpupuli/voxpupuli-release/pull/88) ([bastelfreak](https://github.com/bastelfreak))
+
+**Implemented enhancements:**
+
+- puppet-blacksmith: Allow 9.x [\#90](https://github.com/voxpupuli/voxpupuli-release/pull/90) ([bastelfreak](https://github.com/bastelfreak))
+- openvox-strings: Allow 6.x [\#89](https://github.com/voxpupuli/voxpupuli-release/pull/89) ([bastelfreak](https://github.com/bastelfreak))
+
 ## [v4.0.0](https://github.com/voxpupuli/voxpupuli-release/tree/v4.0.0) (2025-06-10)
 
 [Full Changelog](https://github.com/voxpupuli/voxpupuli-release/compare/v3.2.3...v4.0.0)
