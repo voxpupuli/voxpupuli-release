@@ -21,7 +21,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'faraday-retry', '~> 2.1'
   s.add_dependency 'github_changelog_generator', '~> 1.16', '>= 1.16.4'
   s.add_dependency 'openvox-strings', '>= 5', '< 7'
-  s.add_dependency 'puppet-blacksmith', '~> 8.0', '< 10'
+  s.add_dependency 'puppet-blacksmith', '>= 8.0', '< 10'
   s.add_dependency 'rake', '~> 13.0', '>= 13.0.6'
 
   s.add_development_dependency 'voxpupuli-rubocop', '~> 4.2.0'

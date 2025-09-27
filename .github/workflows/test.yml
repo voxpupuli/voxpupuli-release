@@ -44,6 +44,8 @@ jobs:
         with:
           ruby-version: ${{ matrix.ruby }}
           bundler-cache: true
+      - name: Display Ruby environment
+        run: bundle env
       - name: check that required tasks are available
         run: |
           bundle exec rake --rakefile Rakefile_ci -T '^strings:generate:reference$' | grep --quiet .
