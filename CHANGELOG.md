@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## [v5.0.1](https://github.com/voxpupuli/voxpupuli-release/tree/v5.0.1) (2025-09-27)
+
+[Full Changelog](https://github.com/voxpupuli/voxpupuli-release/compare/v5.0.0...v5.0.1)
+
+**Fixed bugs:**
+
+- puppet-blacksmith: Fix condition to allow 9.x & CI: Output bundler environment  [\#92](https://github.com/voxpupuli/voxpupuli-release/pull/92) ([bastelfreak](https://github.com/bastelfreak))
+
 ## [v5.0.0](https://github.com/voxpupuli/voxpupuli-release/tree/v5.0.0) (2025-09-26)
 
 [Full Changelog](https://github.com/voxpupuli/voxpupuli-release/compare/v4.0.0...v5.0.0)
