@@ -23,6 +23,10 @@ Gem::Specification.new do |s|
   s.add_dependency 'openvox-strings', '>= 5', '< 7'
   s.add_dependency 'puppet-blacksmith', '>= 8.0', '< 10'
   s.add_dependency 'rake', '~> 13.0', '>= 13.0.6'
+  # openvox gem depends on syslog, but doesn't list it as explicit dependency
+  # until Ruby 3.4, syslog was part of MRI ruby core
+  # https://github.com/OpenVoxProject/puppet/issues/90
+  s.add_dependency 'syslog', '~> 0.3.0'
 
   s.add_development_dependency 'voxpupuli-rubocop', '~> 4.2.0'
 end
