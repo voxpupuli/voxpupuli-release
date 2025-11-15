@@ -28,5 +28,5 @@ Gem::Specification.new do |s|
   # https://github.com/OpenVoxProject/puppet/issues/90
   s.add_dependency 'syslog', '~> 0.3.0'
 
-  s.add_development_dependency 'voxpupuli-rubocop', '~> 4.2.0'
+  s.add_development_dependency 'voxpupuli-rubocop', '~> 5.0.0'
 end
