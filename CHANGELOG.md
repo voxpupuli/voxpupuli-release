@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file.
 
+## [v5.0.2](https://github.com/voxpupuli/voxpupuli-release/tree/v5.0.2) (2025-11-15)
+
+[Full Changelog](https://github.com/voxpupuli/voxpupuli-release/compare/v5.0.1...v5.0.2)
+
+**Fixed bugs:**
+
+- Use proper job we can depend on [\#100](https://github.com/voxpupuli/voxpupuli-release/pull/100) ([bastelfreak](https://github.com/bastelfreak))
+- Add syslog as runtime dependency [\#98](https://github.com/voxpupuli/voxpupuli-release/pull/98) ([bastelfreak](https://github.com/bastelfreak))
+
+**Merged pull requests:**
+
+- voxpupuli-rubocop: Update 4.2.0-\>5.0.0 [\#99](https://github.com/voxpupuli/voxpupuli-release/pull/99) ([bastelfreak](https://github.com/bastelfreak))
+
 ## [v5.0.1](https://github.com/voxpupuli/voxpupuli-release/tree/v5.0.1) (2025-09-27)
 
 [Full Changelog](https://github.com/voxpupuli/voxpupuli-release/compare/v5.0.0...v5.0.1)
