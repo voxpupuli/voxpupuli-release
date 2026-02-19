@@ -2,14 +2,22 @@
 
 All notable changes to this project will be documented in this file.
 
+## [v5.2.0](https://github.com/voxpupuli/voxpupuli-release/tree/v5.2.0) (2026-02-19)
+
+[Full Changelog](https://github.com/voxpupuli/voxpupuli-release/compare/v5.1.0...v5.2.0)
+
+**Implemented enhancements:**
+
+- syslog: Allow 0.4 [\#110](https://github.com/voxpupuli/voxpupuli-release/pull/110) ([bastelfreak](https://github.com/bastelfreak))
+
 ## [v5.1.0](https://github.com/voxpupuli/voxpupuli-release/tree/v5.1.0) (2026-01-05)
 
 [Full Changelog](https://github.com/voxpupuli/voxpupuli-release/compare/v5.0.2...v5.1.0)
 
 **Implemented enhancements:**
 
-- Add Ruby 4.0 suppprt [\#105](https://github.com/voxpupuli/voxpupuli-release/pull/105) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Create the GitHub release with files in one step [\#107](https://github.com/voxpupuli/voxpupuli-release/pull/107) ([bwitt](https://github.com/bwitt))
+- Add Ruby 4.0 suppprt [\#105](https://github.com/voxpupuli/voxpupuli-release/pull/105) ([dependabot[bot]](https://github.com/apps/dependabot))
 
 ## [v5.0.2](https://github.com/voxpupuli/voxpupuli-release/tree/v5.0.2) (2025-11-15)
 
