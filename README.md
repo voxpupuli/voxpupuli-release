@@ -28,13 +28,20 @@ To cut a new release of your module, ensure the `metadata.json` reflects the exp
 bundle exec rake release:prepare
 ```
 
-Commit these changes (likely in a new branch, open a Pull-Request and wait for it to be reviewed and merged).  When ready to ship the new release, ensure you are on the main branch, it is up-to-date, and run:
+Commit these changes (likely in a new branch, open a Pull-Request and wait for it to be reviewed and merged).
+When ready to ship the new release, ensure you are on the main branch, it is up-to-date, and run:
 
 ```plain
 bundle exec rake release
 ```
 
-This will perform some sanity checks, tag the current commit with the version number, and bump the version number to ensure no conflict will happen by mistake.
+This will perform some sanity checks, tag the current commit with the version number, and bump the version number to ensure no conflict will happen by mistake and then run `git push && git push --tags`.
+
+It's also possible to not bump the version to the next rc:
+
+```plain
+bundle exec rake release:tag_and_push
+```
 
 ## License
 
