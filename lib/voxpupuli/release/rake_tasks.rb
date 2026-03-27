@@ -46,29 +46,9 @@ end
 
 desc 'Release via GitHub Actions'
 task :release do
-  Blacksmith::RakeTask.new do |t|
-    t.build = false # do not build the module nor push it to the Forge
-    t.tag_sign = true # sign release with gpg
-    t.tag_message_pattern = 'Version %s' # required tag message for gpg-signed tags
-    # just do the tagging [:clean, :tag, :bump_commit]
-  end
+  Rake::Task['release:validate'].invoke
 
-  m = Blacksmith::Modulefile.new
-  v = m.version
-  unless v.match?(/^\d+\.\d+\.\d+$/)
-    raise "Refusing to release an RC or build-release (#{v}).\n" \
-          'Please set a semver *release* version.'
-  end
-
-  # validate that the REFERENCE.md is up2date, if it exists
-  Rake::Task['strings:validate:reference'].invoke if File.exist?('REFERENCE.md')
-  Rake::Task[:check_changelog].invoke
-  # do a "manual" module:release (clean, tag, bump, commit, push tags)
-  Rake::Task['module:clean'].invoke
-
-  # idempotently create tags
-  g = Blacksmith::Git.new
-  Rake::Task['module:tag'].invoke unless g.has_version_tag?(v)
+  Rake::Task['release:tag_and_push'].invoke
 
   v_inc = m.increase_version(v)
   v_new = "#{v_inc}-rc0"
@@ -94,6 +74,39 @@ task :check_changelog do
 end
 
 namespace :release do
+  desc 'prepare puppet-blacksmith'
+  task :prepare_blacksmith do
+    Blacksmith::RakeTask.new do |t|
+      t.build = false # do not build the module nor push it to the Forge
+      t.tag_sign = true # sign release with gpg
+      t.tag_message_pattern = 'Version %s' # required tag message for gpg-signed tags
+    end
+  end
+
+  # checks if we have a clean git checkout and REFERENCE.md/CHANGELOG.md are correct
+  desc 'validate module'
+  task :validate do
+    version = Blacksmith::Modulefile.new.version
+    unless version.match?(/^\d+\.\d+\.\d+$/)
+      raise "Refusing to release an RC or build-release (#{version}).\n" \
+            'Please set a semver *release* version.'
+    end
+
+    # validate that the REFERENCE.md is up2date, if it exists
+    Rake::Task['strings:validate:reference'].invoke if File.exist?('REFERENCE.md')
+    Rake::Task[:check_changelog].invoke
+    Rake::Task['module:clean'].invoke # just deletes old artifacts in pkg/
+  end
+
+  desc 'tag module and push it'
+  task tag_and_push: %w[validate prepare_blacksmith] do
+    # idempotently create tags
+    git = Blacksmith::Git.new
+    version = Blacksmith::Modulefile.new.version
+    Rake::Task['module:tag'].invoke unless git.has_version_tag?(version)
+    git.push!
+  end
+
   desc 'Prepare a release'
   task prepare: ['release:porcelain:changelog'] do
     v = Blacksmith::Modulefile.new.version
