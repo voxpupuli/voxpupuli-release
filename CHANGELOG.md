@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## [v5.4.0](https://github.com/voxpupuli/voxpupuli-release/tree/v5.4.0) (2026-03-27)
+
+[Full Changelog](https://github.com/voxpupuli/voxpupuli-release/compare/v5.3.1...v5.4.0)
+
+**Implemented enhancements:**
+
+- Add release task without version bump: `release:tag_and_push` [\#120](https://github.com/voxpupuli/voxpupuli-release/pull/120) ([bastelfreak](https://github.com/bastelfreak))
+
 ## [v5.3.1](https://github.com/voxpupuli/voxpupuli-release/tree/v5.3.1) (2026-03-15)
 
 [Full Changelog](https://github.com/voxpupuli/voxpupuli-release/compare/v5.3.0...v5.3.1)
