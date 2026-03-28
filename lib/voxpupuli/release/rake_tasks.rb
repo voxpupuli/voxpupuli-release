@@ -50,13 +50,6 @@ task :release do
 
   Rake::Task['release:tag_and_push'].invoke
 
-  v_inc = m.increase_version(v)
-  v_new = "#{v_inc}-rc0"
-  ENV['BLACKSMITH_FULL_VERSION'] = v_new
-  Rake::Task['module:bump:full'].invoke
-
-  # push it out, and let GitHub Actions do the release:
-  g.commit_modulefile!(v_new)
   g.push!
 end
 
