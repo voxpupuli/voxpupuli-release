@@ -138,6 +138,7 @@ namespace :release do
       # The generator cannot be used because we want to lazyly evaluate
       # GCGConfig.user which might be overrider in the module Rakefile.
       options = GitHubChangelogGenerator::Parser.default_options
+      GitHubChangelogGenerator::FileParserChooser.new(options).parse!([])
       options[:user] = GCGConfig.user
       options[:project] = GCGConfig.project
       options[:future_release] = GCGConfig.future_release
