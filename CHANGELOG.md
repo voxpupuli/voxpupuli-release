@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## [v5.4.1](https://github.com/voxpupuli/voxpupuli-release/tree/v5.4.1) (2026-05-08)
+
+[Full Changelog](https://github.com/voxpupuli/voxpupuli-release/compare/v5.4.0...v5.4.1)
+
+**Fixed bugs:**
+
+- Fix missing variables in release task [\#122](https://github.com/voxpupuli/voxpupuli-release/pull/122) ([jpartlow](https://github.com/jpartlow))
+
 ## [v5.4.0](https://github.com/voxpupuli/voxpupuli-release/tree/v5.4.0) (2026-03-27)
 
 [Full Changelog](https://github.com/voxpupuli/voxpupuli-release/compare/v5.3.1...v5.4.0)
